@@ -26,6 +26,6 @@ class EncryptionTest < Minitest::Test
     encryption.get_message_indexes("hello")
     encryption.set_shifts(["2", "1", "1", "1"], ["2", "3", "4", "5"])
 
-    assert_equal "liqrs", encryption.update_letter_indexes
+    assert_equal "liqrs", encryption.encrypt_message
   end
 end

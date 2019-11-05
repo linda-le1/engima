@@ -38,7 +38,7 @@ class Encryption
     @shifts << generate_random_key[3].to_i + calculate_offset_from_date[3].to_i
   end
 
-  def update_letter_indexes
+  def encrypt_message
     message = @encrypted
     new_message = []
     message.map do |letter_index|
@@ -51,5 +51,4 @@ class Encryption
     end
     new_encrypted.join
   end
-
 end
