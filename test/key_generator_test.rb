@@ -25,11 +25,6 @@ class KeyGeneratorTest < Minitest::Test
   end
 
   def test_it_can_calculate_shifts
-    #need to use mock/stubs here
-    generate_random_key =["10", "11", "12", "13"]
-    calculate_offset_from_date =["1", "2", "3","4"]
-
-    assert_equal 11, @key_generator.set_shift_a
-    assert_equal 13, @key_generator.set_shift_b
+    assert_equal 4, @key_generator.set_shifts.count
   end
 end

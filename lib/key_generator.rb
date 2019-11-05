@@ -17,19 +17,11 @@ class KeyGenerator
     squared_total.to_s[-4..-1]
   end
 
-  def set_shift_a
-    generate_random_key[0].to_i + calculate_offset_from_date[0].to_i
-  end
-
-  def set_shift_b
-    generate_random_key[1].to_i + calculate_offset_from_date[1].to_i
-  end
-
-  def set_shift_c
-    generate_random_key[2].to_i + calculate_offset_from_date[2].to_i
-  end
-
-  def set_shift_d
-    generate_random_key[3].to_i + calculate_offset_from_date[3].to_i
+  def set_shifts
+    shifts = []
+    shifts << generate_random_key[0].to_i + calculate_offset_from_date[0].to_i
+    shifts << generate_random_key[1].to_i + calculate_offset_from_date[1].to_i
+    shifts << generate_random_key[2].to_i + calculate_offset_from_date[2].to_i
+    shifts << generate_random_key[3].to_i + calculate_offset_from_date[3].to_i
   end
 end
