@@ -4,6 +4,7 @@ class Encryption
   def initialize
     @alphabet = ("a".."z").to_a << " "
     @shifts = []
+    @encrypted = []
   end
 
   def find_letter_starting_point(letter)
@@ -13,8 +14,9 @@ class Encryption
   def get_message_indexes(message)
     new_message = message.split("")
     new_message.map do |letter|
-      find_letter_starting_point(letter)
+      @encrypted << find_letter_starting_point(letter)
     end
+    @encrypted
   end
 
   def generate_random_key
@@ -36,19 +38,18 @@ class Encryption
     @shifts << generate_random_key[3].to_i + calculate_offset_from_date[3].to_i
   end
 
-  def update_letter_indexes(message, set_shifts)
-    encrypted_message = get_message_indexes(message)
+  def update_letter_indexes
+    message = @encrypted
     new_message = []
-    encrypted_message.map do |letter_index|
-      new_message << (letter_index + set_shifts.first)%27
-         set_shifts.rotate!
+    message.map do |letter_index|
+      new_message << (letter_index + @shifts.first)%27
+         @shifts.rotate!
     end
-    new_message
-  end
-
-  def encrypt
-    update_letter_indexes.map do char
-
+    new_encrypted = []
+    new_message.map do |value|
+      new_encrypted << @alphabet[value]
+    end
+    new_encrypted.join
   end
 
 end

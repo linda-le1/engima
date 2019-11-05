@@ -20,10 +20,12 @@ class EncryptionTest < Minitest::Test
     assert_equal [12, 14, 16, 18], encryption.set_shifts(["10", "11", "12", "13"], ["2", "3", "4", "5"])
   end
 
-
-  def test_it_can_calculate_new_indexes
+  def test_it_encrypts_into_new_letters
     encryption = Encryption.new
-    assert_equal [8, 6, 14, 15, 15], encryption.update_letter_indexes("hello", [1, 2, 3, 4])
-  end
+    message = "hello"
+    encryption.get_message_indexes("hello")
+    encryption.set_shifts(["2", "1", "1", "1"], ["2", "3", "4", "5"])
 
+    assert_equal "liqrs", encryption.update_letter_indexes
+  end
 end
