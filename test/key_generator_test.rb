@@ -4,7 +4,7 @@ require './lib/key_generator'
 class KeyGeneratorTest < Minitest::Test
 
   def setup
-    @key_generator = KeyGenerator.new
+    @key_generator = KeyGenerator.new(12345, 41119)
   end
 
   def test_it_exists
@@ -12,8 +12,7 @@ class KeyGeneratorTest < Minitest::Test
   end
 
   def test_it_initializes
-    key_generator = KeyGenerator.new(41119)
-    assert_equal 41119, key_generator.date
+    assert_equal 51119, @key_generator.date
   end
 
   def test_it_generates_key
