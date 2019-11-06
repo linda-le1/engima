@@ -22,9 +22,10 @@ class Decryption
   def get_reverse_indexed_message(message, key_generator)
     message_to_be_decrypted = get_message_in_indexes(message)
     new_message = []
+    rotated_shifts = key_generator.set_shifts
     message_to_be_decrypted.map do |letter_index|
-      new_message << (letter_index - key_generator.set_shifts.first)%27
-         key_generator.set_shifts.rotate!
+      new_message << (letter_index - (rotated_shifts.first%27))
+         rotated_shifts = rotated_shifts.rotate!
     end
     new_message
   end

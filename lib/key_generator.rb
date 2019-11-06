@@ -1,3 +1,4 @@
+require 'date'
 class KeyGenerator
   attr_reader :key,
               :date
@@ -18,7 +19,8 @@ class KeyGenerator
   end
 
   def calculate_offset_from_date
-    squared_total = (@date ** 2)
+    date = @date.to_i
+    squared_total = (date ** 2)
     squared_total.to_s[-4..-1]
   end
 

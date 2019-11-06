@@ -15,7 +15,7 @@ class Encryption
     message_in_indexes = []
     message = message.to_s.downcase.split("")
     message.map do |letter|
-      message_in_indexes << find_letter_starting_point(letter)
+        message_in_indexes << find_letter_starting_point(letter)
     end
     message_in_indexes
   end
@@ -23,9 +23,10 @@ class Encryption
   def apply_shifts_to_message_in_indexes(message, key_generator)
     updated_message = get_message_in_indexes(message)
     shifted_message = []
+    rotated_shifts = key_generator.set_shifts
     updated_message.map do |letter_index|
-      shifted_message << (letter_index + key_generator.set_shifts.first)%27
-         key_generator.set_shifts.rotate!
+      shifted_message << (letter_index + rotated_shifts.first)%27
+         rotated_shifts = rotated_shifts.rotate!
     end
     shifted_message
   end
