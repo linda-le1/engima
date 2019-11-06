@@ -21,7 +21,6 @@ class EncryptionTest < Minitest::Test
     key_generator.generate_random_key
     key_generator.calculate_offset_from_date
     key_generator.set_shifts
-    require "pry"; binding.pry
     encryption.get_message_in_indexes("hello")
     assert_equal "uryya", encryption.encryption("hello", 11111, 61119)
   end
