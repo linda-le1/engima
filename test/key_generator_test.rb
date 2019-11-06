@@ -12,12 +12,18 @@ class KeyGeneratorTest < Minitest::Test
   end
 
   def test_it_initializes
+    assert_equal "02715", @key_generator.key
     assert_equal "040895", @key_generator.date
   end
 
-  def test_it_generates_key
+  def test_it_uses_provided_key
     assert_equal ["02", "27", "71", "15"], @key_generator.generate_random_key
     assert_equal 4, @key_generator.generate_random_key.length
+  end
+
+  def test_random_key_is_five_digits_long
+    key_generator =KeyGenerator.new(key = nil , date = nil)
+    assert 5, key_generator.generate_random_key
   end
 
   def test_date_defaults_to_today
