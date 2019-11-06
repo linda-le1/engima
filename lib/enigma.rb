@@ -1,5 +1,5 @@
 require './lib/key_generator'
-require './lib/decrypt'
+require './lib/decryption'
 require './lib/encryption'
 require 'date'
 

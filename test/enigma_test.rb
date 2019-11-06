@@ -1,7 +1,5 @@
 require_relative 'test_helper'
-require './lib/enigma'
-require './lib/encryption'
-require './lib/decryption'
+require'./lib/enigma'
 
 class EnigmaTest < Minitest::Test
 
