@@ -1,7 +1,9 @@
+require './lib/key_generator'
+
 class Encryption
   attr_reader :alphabet
 
-  def initialize
+  def initialize(message)
     @alphabet = ("a".."z").to_a << " "
     @shifts = []
     @encrypted = []
@@ -38,7 +40,7 @@ class Encryption
     @shifts << generate_random_key[3].to_i + calculate_offset_from_date[3].to_i
   end
 
-  def encrypt_message
+  def encryption(message, key = nil, date = nil)
     message = @encrypted
     new_message = []
     message.map do |letter_index|
