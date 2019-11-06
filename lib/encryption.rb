@@ -33,7 +33,9 @@ class Encryption
     squared_total.to_s[-4..-1]
   end
 
-  def set_shifts(generate_random_key, calculate_offset_from_date)
+  def set_shifts(key, date)
+    generate_random_key(key)
+    calculate_offset_from_date(date)
     @shifts << generate_random_key[0].to_i + calculate_offset_from_date[0].to_i
     @shifts << generate_random_key[1].to_i + calculate_offset_from_date[1].to_i
     @shifts << generate_random_key[2].to_i + calculate_offset_from_date[2].to_i
