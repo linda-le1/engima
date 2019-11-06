@@ -3,7 +3,7 @@ class KeyGenerator
   attr_reader :key,
               :date
 
-  def initialize(key, date = Time.now.strftime("%d%m%y").to_i)
+  def initialize(key, date)
     @key = key
     @date = date
   end
@@ -19,6 +19,9 @@ class KeyGenerator
   end
 
   def calculate_offset_from_date
+    if @date.nil?
+      @date = Time.now.strftime("%d%m%y").to_i
+    end
     date = @date.to_i
     squared_total = (date ** 2)
     squared_total.to_s[-4..-1]

@@ -5,7 +5,7 @@ require 'date'
 
 class Enigma
 
-  def encrypt(message, key, date)
+  def encrypt(message, key = nil, date = nil)
     key_generator = KeyGenerator.new(key, date)
     encrypted_hash = {}
     encrypted_hash[:encryption] = Encryption.new.encryption(message, key_generator)
@@ -14,8 +14,8 @@ class Enigma
     encrypted_hash
   end
 
-  def decrypt(message, key, date)
-    key_generator = KeyGenerator.new(key,date)
+  def decrypt(message, key, date = nil)
+    key_generator = KeyGenerator.new(key, date)
     encrypted_hash = {}
     encrypted_hash[:decryption] = Decryption.new.decryption(message, key_generator)
     encrypted_hash[:key] = key_generator.key.to_s
