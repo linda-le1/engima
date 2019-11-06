@@ -4,7 +4,7 @@ require './lib/key_generator'
 class KeyGeneratorTest < Minitest::Test
 
   def setup
-    @key_generator = KeyGenerator.new(12345, 41119)
+    @key_generator = KeyGenerator.new(12345)
   end
 
   def test_it_exists

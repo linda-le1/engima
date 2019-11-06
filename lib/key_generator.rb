@@ -2,9 +2,9 @@ class KeyGenerator
   attr_reader :key,
               :date
 
-  def initialize(key, date)
+  def initialize(key, date = Time.now.strftime("%d%m%y").to_i)
     @key = key
-    @date = Time.now.strftime("%d%m%y").to_i
+    @date = date
   end
 
   def generate_random_key
