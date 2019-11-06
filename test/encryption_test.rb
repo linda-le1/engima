@@ -15,16 +15,14 @@ class EncryptionTest < Minitest::Test
     assert_equal [7, 4, 11, 11, 14], encryption.get_message_in_indexes("hello")
   end
 
-  def test_it_shifts
-    encryption = Encryption.new
-    assert_equal [12, 14, 16, 18], encryption.set_shifts(["10", "11", "12", "13"], ["2", "3", "4", "5"])
-  end
-
   def test_it_encrypts_into_new_letters
     encryption = Encryption.new
+    key_generator = KeyGenerator.new(11111, 61119)
+    key_generator.generate_random_key
+    key_generator.calculate_offset_from_date
+    key_generator.set_shifts
+    require "pry"; binding.pry
     encryption.get_message_in_indexes("hello")
-    encryption.set_shifts(["2", "1", "1", "1"], ["2", "3", "4", "5"])
-
-    assert_equal "liqrs", encryption.encryption("hello", ["2", "1", "1", "1"], ["2", "3", "4", "5"] )
+    assert_equal "uryya", encryption.encryption("hello", 11111, 61119)
   end
 end

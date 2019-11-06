@@ -12,8 +12,8 @@ class DecryptionTest < Minitest::Test
   def test_it_decrypts
     decryption = Decryption.new
     decryption.get_message_indexes("liqrs")
-    decryption.set_shifts(["2", "1", "1", "1"], ["2", "3", "4", "5"])
+    decryption.set_shifts
     assert_equal "hello", decryption.decrypt_message
   end
-  
+
 end
